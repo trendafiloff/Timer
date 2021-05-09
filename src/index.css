@@ -1,0 +1,209 @@
+@font-face {
+  font-family: "ArialRoundedBold";
+  font-display: swap;
+  src: url("./fonts/Arial-Rounded-MT-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ArialRounded";
+  font-display: swap;
+  src: url("./fonts/Arial_Rounded_MT.ttf") format("truetype");
+  font-weight: bold;
+}
+
+html {
+  background-color: #2e4381;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #2e4381;
+  height: 100%; /*?*/
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#root {
+  height: 100%; /*?*/
+  width: 100%;
+  text-align: center;
+  background-color: #2e4381;
+  font-family: "ArialRoundedBold";
+}
+.app {
+  background-color: #2e4381;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.header {
+  background-color: #2e4381;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #2194f0;
+  font-size: 25px;
+}
+.container1 {
+  background-color: rgb(70, 101, 194, 0.5);
+  display: block;
+  min-height: calc(100vh - 10.5rem);
+  padding-top: 20px;
+  background-position: 50% 50%;
+  background-size: 40%;
+  background-repeat: no-repeat;
+}
+.content {
+  width: 45%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #2e4381;
+  border: 3px solid #2194f0;
+  border-radius: 25px;
+  min-height: 300px; /*temp*/
+  padding-top: 15px;
+  padding-bottom: 15px;
+  overflow: hidden;
+}
+.footarea {
+  height: 2vh;
+}
+.footer {
+  position: static;
+  bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(70, 101, 194, 0.9);
+  font-family: "ArialRounded";
+  height: 20px;
+}
+
+.description {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: justify;
+  font-size: 17px;
+  color: #ffffff;
+  font-family: "ArialRounded";
+  padding: 5px;
+}
+
+.settings-section,
+.times,
+.controller {
+  color: #2194f0;
+
+  font-size: 35px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+span#session-length {
+  margin: 30px;
+  border-radius: 100%;
+}
+
+.settings-section button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 2px solid #2194f0;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 6px;
+  outline: none;
+  width: 35px;
+  height: 35px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+.settings-section button:hover {
+  background-color: #2194f0;
+}
+.controller button {
+  font-size: 1.1rem;
+  font-weight: 525;
+  border: 2px solid #2194f0;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 6px;
+  outline: none;
+  width: 85px;
+  height: 35px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  margin: 15px;
+  text-transform: uppercase;
+  padding: 12px;
+  font-family: "ArialRoundedBold";
+}
+.controller button:hover {
+  background-color: #2194f0;
+}
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 775px) {
+  .content {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 555px) {
+  .content {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 465px) {
+  .content {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .content {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 305px) {
+  .content {
+    width: 100%;
+  }
+}
+
+button {
+  cursor: pointer;
+}
