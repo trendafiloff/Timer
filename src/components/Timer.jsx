@@ -14,11 +14,20 @@ export default class Times extends Component {
   render() {
     return (
       <div className="times">
-        <div className="times-content">
-          <label id="timer-label">{this.props.timeLabel}</label>
+        <div
+          className="times-content"
+          style={{ borderColor: this.props.bodyHeaderContainerC }}
+        >
+          <label id="timer-label">
+            Current:<br></br>
+            {this.props.timeLabel}
+          </label>
           <br></br>
           <span id="time-left">{formatTime(this.props.timeLeftInSecond)}</span>
         </div>
+        <title>
+          {this.props.timeLabel} - {formatTime(this.props.timeLeftInSecond)}
+        </title>
       </div>
     );
   }

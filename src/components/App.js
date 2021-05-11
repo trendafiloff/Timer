@@ -17,7 +17,15 @@ export default class App extends Component {
         Number.parseInt(this.props.defaultSessionLength, 10) * 60,
       isStart: false,
       timerInterval: null,
+      breakMins: "mins",
+      workMins: "mins",
+      //
+      bodyHeaderContainerBg: "#2e4381",
+      bodyHeaderContainerC: "#2194f0",
+      linkColor: "#1a76c0",
+      buttonBg: "#2194f0",
     };
+
     this.onIncreaseBreak = this.onIncreaseBreak.bind(this);
     this.onDecreaseBreak = this.onDecreaseBreak.bind(this);
     this.onIncreaseSession = this.onIncreaseSession.bind(this);
@@ -34,12 +42,22 @@ export default class App extends Component {
         breakLength: this.state.breakLength + 1,
       });
     }
+    if (this.state.breakLength === 1) {
+      this.setState({
+        breakMins: "mins",
+      });
+    }
   }
 
   onDecreaseBreak() {
     if (this.state.breakLength > 1 && !this.state.isStart) {
       this.setState({
         breakLength: this.state.breakLength - 1,
+      });
+    }
+    if (this.state.breakLength === 2) {
+      this.setState({
+        breakMins: "min",
       });
     }
   }
@@ -51,6 +69,11 @@ export default class App extends Component {
         timeLeftInSecond: (this.state.sessionLength + 1) * 60,
       });
     }
+    if (this.state.sessionLength === 1) {
+      this.setState({
+        workMins: "mins",
+      });
+    }
   }
 
   onDecreaseSession() {
@@ -60,10 +83,18 @@ export default class App extends Component {
         timeLeftInSecond: (this.state.sessionLength - 1) * 60,
       });
     }
+    if (this.state.sessionLength === 2) {
+      this.setState({
+        workMins: "min",
+      });
+    }
   }
 
   onReset() {
     this.setState({
+      bodyHeaderContainerBg: "#2e4381",
+      bodyHeaderContainerC: "#2194f0",
+      linkColor: "#1a76c0",
       breakLength: Number.parseInt(this.props.defaultBreakLength, 10),
       sessionLength: Number.parseInt(this.props.defaultSessionLength, 10),
       timeLabel: "Work Session",
@@ -113,11 +144,17 @@ export default class App extends Component {
         this.setState({
           timeLabel: "Break Session",
           timeLeftInSecond: this.state.breakLength * 60,
+          bodyHeaderContainerBg: "#58c77d",
+          bodyHeaderContainerC: "#2C633E",
+          linkColor: "#341213",
         });
       } else {
         this.setState({
           timeLabel: "Work Session",
           timeLeftInSecond: this.state.sessionLength * 60,
+          bodyHeaderContainerBg: "#2e4381",
+          bodyHeaderContainerC: "#2194f0",
+          linkColor: "#1a76c0",
         });
       }
     }
@@ -126,12 +163,36 @@ export default class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="header">
-          <h2 className="header-text">Customizable Timer</h2>
+        <div
+          className="header"
+          style={{ backgroundColor: this.state.bodyHeaderContainerBg }}
+        >
+          <h2
+            className="header-text"
+            style={{
+              backgroundColor: this.state.bodyHeaderContainerBg,
+              color: this.state.bodyHeaderContainerC,
+            }}
+          >
+            Customizable Timer
+          </h2>
         </div>
-        <div className="app">
+        <div
+          className="app"
+          style={{
+            backgroundColor: this.state.bodyHeaderContainerBg,
+            color: this.state.bodyHeaderContainerC,
+          }}
+        >
           <div className="container1">
-            <div className="content">
+            <div
+              className="content"
+              style={{
+                backgroundColor: this.state.bodyHeaderContainerBg,
+                color: this.state.bodyHeaderContainerC,
+                borderColor: this.state.bodyHeaderContainerC,
+              }}
+            >
               <Setup
                 breakLength={this.state.breakLength}
                 sessionLength={this.state.sessionLength}
@@ -140,17 +201,23 @@ export default class App extends Component {
                 onDecreaseSession={this.onDecreaseSession}
                 onIncreaseBreak={this.onIncreaseBreak}
                 onIncreaseSession={this.onIncreaseSession}
+                breakMins={this.state.breakMins}
+                workMins={this.state.workMins}
+                bodyHeaderContainerC={this.state.bodyHeaderContainerC}
               />
 
               <Timer
                 timeLabel={this.state.timeLabel}
                 timeLeftInSecond={this.state.timeLeftInSecond}
+                bodyHeaderContainerC={this.state.bodyHeaderContainerC}
               />
 
               <Controller
                 onReset={this.onReset}
                 onStartStop={this.onStartStop}
                 isStart={this.state.isStart}
+                bodyHeaderContainerC={this.state.bodyHeaderContainerC}
+                bodyHeaderContainerBg={this.state.bodyHeaderContainerBg}
               />
 
               <audio
@@ -159,7 +226,7 @@ export default class App extends Component {
                 src="https://dight310.byu.edu/media/audio/FreeLoops.com/3/3/Game%20Enginng%20Buzzer-14157-Free-Loops.com.mp3"
                 ref={this.audioBeep}
               ></audio>
-            </div>{" "}
+            </div>
             <div className="description">
               <p>
                 This is a customizable timer application that is supported by
@@ -176,20 +243,28 @@ export default class App extends Component {
               </p>
               <p>
                 If you want to follow the technique, it is advised that you
-                split your work into 25-minute intervals, followed by 5 minutes
+                split your work into 25 minute intervals, followed by 5 minutes
                 of break. After 4 work intervals have been completed, a longer
                 break should be taken. Afterwards, the cycle of 4 work intervals
-                with 3 small break continues, followed by a longer break after
-                the 4th work interval.
+                with 3 small breaks continues, followed by a longer break after
+                the 4<sup>th</sup> work interval.
               </p>
             </div>
           </div>
-        </div>
-        <div className="footarea">
-          <div className="footer">
+
+          <div
+            className="footer"
+            style={{
+              backgroundColor: this.state.bodyHeaderContainerBg,
+              color: this.state.bodyHeaderContainerC,
+            }}
+          >
             Designed by
             <a
-              style={{ textDecoration: "none", color: "#2194f0" }}
+              style={{
+                textDecoration: "none",
+                color: this.state.linkColor,
+              }}
               href="https://serimi.github.io"
             >
               {" "}
